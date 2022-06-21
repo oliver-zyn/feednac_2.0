@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--gray-800);
+  border-radius: 8px;
+  padding: 1rem 2.5rem;
+}
+
+.header > div {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  gap: 0.6rem;
+  background: var(--gray-700);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+}
+
+.header > div svg {
+  color: var(--blue-500);
+}
+
+.header > div span {
+  font-size: 1.1rem;
+}
+
+.header button[type=submit] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  border: 0;
+  background: var(--blue-500);
+  color: var(--white);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color .1s;
+}
+
+.header button[type=submit]:hover {
+  background: var(--blue-300);
+}

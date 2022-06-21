@@ -1,0 +1,132 @@
+.react-modal-overlay {
+  background: rgba(0, 0, 0, 0.5);
+
+  position: fixed;
+  inset: 0;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.react-modal-content {
+  width: 100%;
+  max-width: 576px;
+  background: var(--gray-800);
+  padding: 1.7rem 2rem;
+  position: relative;
+  border-radius: 0.25rem;
+  animation: anim-initial-modal .6s ease forwards;
+  opacity: 0;
+  outline: none;
+}
+
+.react-modal-content:focus {
+  box-shadow: none;
+}
+
+.react-modal-content header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.react-modal-content header button {
+  all: unset;
+  cursor: pointer;
+  color: var(--gray-300);
+  transition: color 0.2s;
+}
+
+.react-modal-content header button:hover {
+  color: var(--white);
+}
+
+.react-modal-content main {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.react-modal-content main textarea {
+  width: 100%;
+  background: var(--gray-900);
+  border: 0;
+  resize: none;
+  height: 6rem;
+  padding: 1rem;
+  border-radius: 8px;
+  color: var(--gray-100);
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.react-modal-content main input {
+  width: 100%;
+  background: var(--gray-900);
+  border: 0;
+  padding: 1rem;
+  border-radius: 8px;
+  color: var(--gray-100);
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.react-modal-content main > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.react-modal-content main > div button {
+  flex: 1;
+  height: 3rem;
+  background: var(--gray-600);
+  border: 1px solid var(--gray-400);
+  color: var(--gray-100);
+  cursor: pointer;
+}
+
+.react-modal-content main > div button:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.react-modal-content main > div button:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.activeTypeButton {
+  border: 2px solid var(--blue-500) !important;
+  background: #5281ef46 !important;
+}
+
+.sendFeedbackButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  border: 0;
+  background: var(--blue-500);
+  color: var(--white);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color .1s;
+  margin-top: 1rem;
+}
+
+.sendFeedbackButton:hover {
+  background: var(--blue-300);
+}
+
+@keyframes anim-initial-modal {
+  0% {
+    opacity: 0;
+    transform: translateY(70px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
