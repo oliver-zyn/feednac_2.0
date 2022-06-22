@@ -19,6 +19,7 @@ interface Post {
   content: {
     title: string;
     description: string;
+    comments: string[];
   };
   type: string;
   publishedAt: Date;
@@ -28,9 +29,28 @@ export function App() {
   const [isNewFeedbackModalOpen, setIsNewFeedbackModalOpen] = useState(false);
   const [isUpdateUserModal, setIsUpdateUserModal] = useState(false);
   const [user, setUser] = useState("Usuário Anônimo");
-  const [userUrl, setUserUrl] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZcKR3b2Q6L7kLv3kV04kBtcs-FaYRsYfxRQ&usqp=CAU')
+  const [userUrl, setUserUrl] = useState(
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZcKR3b2Q6L7kLv3kV04kBtcs-FaYRsYfxRQ&usqp=CAU"
+  );
 
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<Post[]>([
+    {
+      id: Math.floor(Math.random() * 1000),
+      author: {
+        avatarUrl: "https://avatars.githubusercontent.com/u/89222905?v=4",
+        name: "Oliver Mayer",
+        role: "Web Developer",
+      },
+      content: {
+        title: "Meu Feedback!",
+        description:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, ipsa. Quos reiciendis eius hic odit quod eaque ad accusamus. Corrupti odit, suscipit distinctio ex dicta inventore harum adipisci amet numquam.",
+        comments: ["Muito Bom!"],
+      },
+      type: "Bug",
+      publishedAt: new Date(Date.now()),
+    }
+  ]);
 
   function handleOpenNewFeedbackModal() {
     setIsNewFeedbackModalOpen(true);
@@ -50,7 +70,7 @@ export function App() {
 
   function updateUser(user: string, userUrl: string) {
     setUser(user);
-    setUserUrl(userUrl)
+    setUserUrl(userUrl);
   }
 
   function sendNewFeedback(
@@ -68,6 +88,7 @@ export function App() {
       content: {
         title: titleFeedback,
         description: descriptionFeedback,
+        comments: [],
       },
       type: typeFeedback,
       publishedAt: new Date(Date.now()),
@@ -79,7 +100,11 @@ export function App() {
   return (
     <div>
       <div className={styles.wrapper}>
-        <Sidebar user={user} userUrl={userUrl} onOpenUpdateUserModal={handleOpenUpdateUserModal} />
+        <Sidebar
+          user={user}
+          userUrl={userUrl}
+          onOpenUpdateUserModal={handleOpenUpdateUserModal}
+        />
         <main>
           <Header
             onOpenNewFeedbackModal={handleOpenNewFeedbackModal}
