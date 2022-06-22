@@ -25,7 +25,7 @@ export function NewFeedbackModal({
 
   function handleSendNewFeedback() {
     onSendNewFeedback(titleFeedback, descriptionFeedback, activeTypeButton);
-    onCloseNewFeedbackModal()
+    onCloseNewFeedbackModal();
   }
 
   return (
@@ -85,6 +85,9 @@ export function NewFeedbackModal({
         <button
           className={styles.sendFeedbackButton}
           onClick={handleSendNewFeedback}
+          disabled={
+            descriptionFeedback.length === 0 || titleFeedback.length === 0
+          }
         >
           Enviar
         </button>

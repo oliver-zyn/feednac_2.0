@@ -23,9 +23,18 @@ export interface PostProps {
   content: Content;
   type: string;
   publishedAt: Date;
+  user: string;
+  userUrl: string;
 }
 
-export function Post({ author, content, type, publishedAt }: PostProps) {
+export function Post({
+  author,
+  content,
+  type,
+  publishedAt,
+  user,
+  userUrl,
+}: PostProps) {
   const [comments, setComments] = useState(content.comments);
 
   const [newCommentText, setNewCommentText] = useState("");
@@ -117,8 +126,8 @@ export function Post({ author, content, type, publishedAt }: PostProps) {
           return (
             <Comment
               key={comment}
-              user={author.name}
-              userUrl={author.avatarUrl}
+              user={user}
+              userUrl={userUrl}
               content={comment}
               onDeleteComment={deleteComment}
             />

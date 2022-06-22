@@ -49,7 +49,7 @@ export function App() {
       },
       type: "Bug",
       publishedAt: new Date(Date.now()),
-    }
+    },
   ]);
 
   function handleOpenNewFeedbackModal() {
@@ -118,6 +118,8 @@ export function App() {
                 content={post.content}
                 type={post.type}
                 publishedAt={post.publishedAt}
+                user={user}
+                userUrl={userUrl}
               />
             );
           })}

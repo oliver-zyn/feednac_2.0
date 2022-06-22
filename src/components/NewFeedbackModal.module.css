@@ -116,8 +116,12 @@
   margin-top: 1rem;
 }
 
-.sendFeedbackButton:hover {
+.sendFeedbackButton:not(:disabled):hover {
   background: var(--blue-300);
+}
+
+.sendFeedbackButton:disabled {
+  opacity: 0.8;
 }
 
 @keyframes anim-initial-modal {

@@ -13,14 +13,14 @@ interface UpdateUserModalProps {
 export function UpdateUserModal({
   isUpdateUserModal,
   onCloseUpdateUserModal,
-  onUpdateUser
+  onUpdateUser,
 }: UpdateUserModalProps) {
-  const [user, setUser] = useState('')
-  const [userUrl, setUserUrl] = useState('')
+  const [user, setUser] = useState("");
+  const [userUrl, setUserUrl] = useState("");
 
   function handleUpdateUser() {
-    onUpdateUser(user, userUrl)
-    onCloseUpdateUserModal()
+    onUpdateUser(user, userUrl);
+    onCloseUpdateUserModal();
   }
 
   return (
@@ -52,6 +52,7 @@ export function UpdateUserModal({
           onChange={(e) => setUserUrl(e.target.value)}
         />
         <button
+          disabled={user.length === 0 || userUrl.length === 0}
           className={styles.updateUserButton}
           onClick={handleUpdateUser}
         >

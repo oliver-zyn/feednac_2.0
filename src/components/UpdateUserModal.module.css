@@ -75,8 +75,12 @@
   transition: background-color .1s;
 }
 
-.updateUserButton:hover {
+.updateUserButton:not(:disabled):hover {
   background: var(--blue-300);
+}
+
+.updateUserButton:disabled {
+  opacity: 0.8;
 }
 
 @keyframes anim-initial-modal {
