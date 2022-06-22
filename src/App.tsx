@@ -14,7 +14,6 @@ interface Post {
   author: {
     avatarUrl: string;
     name: string;
-    role: string;
   };
   content: {
     title: string;
@@ -39,7 +38,6 @@ export function App() {
       author: {
         avatarUrl: "https://avatars.githubusercontent.com/u/89222905?v=4",
         name: "Oliver Mayer",
-        role: "Web Developer",
       },
       content: {
         title: "Meu Feedback!",

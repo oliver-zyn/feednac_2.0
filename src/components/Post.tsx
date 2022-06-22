@@ -8,7 +8,6 @@ import styles from "./Post.module.css";
 
 interface Author {
   name: string;
-  role: string;
   avatarUrl: string;
 }
 
