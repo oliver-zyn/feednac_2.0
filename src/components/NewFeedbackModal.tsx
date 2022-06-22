@@ -19,12 +19,13 @@ export function NewFeedbackModal({
   onCloseNewFeedbackModal,
   onSendNewFeedback,
 }: NewFeedbackModalProps) {
-  const [activeTypeButton, setActiveTypeButton] = useState("BUG");
+  const [activeTypeButton, setActiveTypeButton] = useState("Bug");
   const [descriptionFeedback, setDescriptionFeedback] = useState("");
   const [titleFeedback, setTitleFeedback] = useState("");
 
   function handleSendNewFeedback() {
     onSendNewFeedback(titleFeedback, descriptionFeedback, activeTypeButton);
+    onCloseNewFeedbackModal()
   }
 
   return (
@@ -58,25 +59,25 @@ export function NewFeedbackModal({
         <div>
           <button
             className={
-              activeTypeButton === "BUG" ? styles.activeTypeButton : ""
+              activeTypeButton === "Bug" ? styles.activeTypeButton : ""
             }
-            onClick={() => setActiveTypeButton("BUG")}
+            onClick={() => setActiveTypeButton("Bug")}
           >
             Bug
           </button>
           <button
             className={
-              activeTypeButton === "IDEA" ? styles.activeTypeButton : ""
+              activeTypeButton === "Ideia" ? styles.activeTypeButton : ""
             }
-            onClick={() => setActiveTypeButton("IDEA")}
+            onClick={() => setActiveTypeButton("Ideia")}
           >
             Ideia
           </button>
           <button
             className={
-              activeTypeButton === "OTHER" ? styles.activeTypeButton : ""
+              activeTypeButton === "Outro" ? styles.activeTypeButton : ""
             }
-            onClick={() => setActiveTypeButton("OTHER")}
+            onClick={() => setActiveTypeButton("Outro")}
           >
             Outro
           </button>

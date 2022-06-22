@@ -7,58 +7,30 @@ import "./global.css";
 import { Header } from "./components/Header";
 import { useState } from "react";
 import { NewFeedbackModal } from "./components/NewFeedbackModal";
+import { UpdateUserModal } from "./components/UpdateUserModal";
 
 interface Post {
   id: number;
   author: {
     avatarUrl: string;
     name: string;
-    role: string
+    role: string;
   };
   content: {
     title: string;
     description: string;
   };
   type: string;
-  publishedAt: Date
+  publishedAt: Date;
 }
 
 export function App() {
   const [isNewFeedbackModalOpen, setIsNewFeedbackModalOpen] = useState(false);
-  const [posts, setPosts] = useState<Post[]>([{
-    id: Math.floor(Math.random() * 1000),
-    author: {
-      avatarUrl: "https://github.com/oliver-zyn.png",
-      name: "Oliver Mayer",
-      role: "Web Developer",
-    },
+  const [isUpdateUserModal, setIsUpdateUserModal] = useState(false);
+  const [user, setUser] = useState("Usuário Anônimo");
+  const [userUrl, setUserUrl] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZcKR3b2Q6L7kLv3kV04kBtcs-FaYRsYfxRQ&usqp=CAU')
 
-    content: {
-      title: "Lorem ipsum dolor",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, minima magni? Odio, iusto accusantium modi fuga dolor quod! Explicabo asperiores vero dolor quibusdam quas quidem ut voluptate nemo nisi? Ex"
-    },
-
-    type: "IDEA",
-
-    publishedAt: new Date("2022-05-03 20:00:00"),
-  },
-  {
-    id: Math.floor(Math.random() * 1000),
-    author: {
-      avatarUrl: "https://github.com/oliver-zyn.png",
-      name: "Oliver Mayer",
-      role: "Web Developer",
-    },
-
-    content: {
-      title: "Meu feedback",
-      description: "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀"
-    },
-
-    type: "BUG",
-
-    publishedAt: new Date("2022-05-10 20:00:00"),
-  },])
+  const [posts, setPosts] = useState<Post[]>([]);
 
   function handleOpenNewFeedbackModal() {
     setIsNewFeedbackModalOpen(true);
@@ -68,29 +40,46 @@ export function App() {
     setIsNewFeedbackModalOpen(false);
   }
 
-  function sendNewFeedback(titleFeedback: string, descriptionFeedback: string, typeFeedback: string) {
+  function handleOpenUpdateUserModal() {
+    setIsUpdateUserModal(true);
+  }
+
+  function handleCloseUpdateUserModal() {
+    setIsUpdateUserModal(false);
+  }
+
+  function updateUser(user: string, userUrl: string) {
+    setUser(user);
+    setUserUrl(userUrl)
+  }
+
+  function sendNewFeedback(
+    titleFeedback: string,
+    descriptionFeedback: string,
+    typeFeedback: string
+  ) {
     const newFeedback = {
       id: Math.floor(Math.random() * 1000),
       author: {
-        avatarUrl: "https://github.com/oliver-zyn.png",
-        name: "Oliver Mayer",
+        avatarUrl: userUrl,
+        name: user,
         role: "Web Developer",
       },
       content: {
         title: titleFeedback,
-        description: descriptionFeedback
+        description: descriptionFeedback,
       },
       type: typeFeedback,
-      publishedAt: new Date(Date.now())
-    }
+      publishedAt: new Date(Date.now()),
+    };
 
-    setPosts([...posts, newFeedback])
+    setPosts([...posts, newFeedback]);
   }
 
   return (
     <div>
       <div className={styles.wrapper}>
-        <Sidebar />
+        <Sidebar user={user} userUrl={userUrl} onOpenUpdateUserModal={handleOpenUpdateUserModal} />
         <main>
           <Header
             onOpenNewFeedbackModal={handleOpenNewFeedbackModal}
@@ -112,6 +101,11 @@ export function App() {
           isNewFeedbackModalOpen={isNewFeedbackModalOpen}
           onCloseNewFeedbackModal={handleCloseNewFeedbackModal}
           onSendNewFeedback={sendNewFeedback}
+        />
+        <UpdateUserModal
+          isUpdateUserModal={isUpdateUserModal}
+          onCloseUpdateUserModal={handleCloseUpdateUserModal}
+          onUpdateUser={updateUser}
         />
       </div>
     </div>

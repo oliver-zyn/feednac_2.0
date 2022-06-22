@@ -56,8 +56,13 @@
 .authorInfo span {
   display: block;
   font-size: 0.875rem;
-  color: var(--gray-400);
+  color: var(--blue-500);
   line-height: 1.6;
+}
+
+.authorInfo span::before {
+  content: 'Tipo: ';
+  color: var(--gray-400);
 }
 
 .commentForm {
