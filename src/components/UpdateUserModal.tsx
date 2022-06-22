@@ -44,7 +44,7 @@ export function UpdateUserModal({
           placeholder="Escreva seu nome de usuário"
           onChange={(e) => setUser(e.target.value)}
         />
-        <label htmlFor="inputUserUrl">Nome de Usuário:</label>
+        <label htmlFor="inputUserUrl">Url para foto de perfil:</label>
         <input
           type="text"
           id="inputUserUrl"
