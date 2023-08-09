@@ -13,6 +13,7 @@ Aplicação em produção: https://feednac.netlify.app
 ## 💻 Tecnologias utilizadas
 
 - React.js
+- CSS Modules
 - TypeScript
 - Phosphor Icons
 - React-modal
