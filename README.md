@@ -1,6 +1,6 @@
 # Feednac
 
-<img src="https://github.com/oliver-zyn/feednac_2.0/assets/89222905/19f99d8c-5ad3-4091-ae63-f617f5324fa8" width="600" />
+<img src="https://github.com/oliver-zyn/feednac_2.0/assets/89222905/b7e93547-42db-4082-9678-e717cf2881eb" width="600" />
 
 ## 📖 Sobre
 
